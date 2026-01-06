@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/mymi3p4ujmwz/public_html/
+    - export DEPLOYPATH=/home/mymi3p4ujmwz/repositories/HRCResults
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp style.css $DEPLOYPATH
