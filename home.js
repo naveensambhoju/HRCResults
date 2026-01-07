@@ -1,2 +1,2 @@
-document.getElementById('content').textContent=
-localStorage.getItem('homeText')||'No content yet';
+document.getElementById("content").textContent =
+  localStorage.getItem("homeText") || "No content yet";
