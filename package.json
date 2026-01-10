@@ -1,0 +1,15 @@
+{
+  "name": "hrcresults",
+  "version": "1.0.0",
+  "description": "Admin message storage and public display (vanilla JS + Node/Express)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node build.js",
+    "start:prod": "NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.4"
+  }
+}
