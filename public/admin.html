@@ -40,7 +40,7 @@
       const textContent = document.getElementById("adminText").value;
       try {
         await addDoc(collection(db, "results"), {
-          value: textContent,
+          results: textContent,
           createdAt : serverTimestamp()
         });
         alert("Saved successfully!");

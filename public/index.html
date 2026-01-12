@@ -18,8 +18,10 @@
     import {
       getFirestore,
       collection,
-      addDoc,
-      getDocs
+      getDocs,
+      query,
+      orderBy,
+      limit
     } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -31,12 +33,22 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-
     window.readItems = async () => {
-      const snapshot = await getDocs(collection(db, "results"));
-      const data = snapshot.docs.map(d => d.data());
-      console.log(data);
-      document.getElementById("results").innerHTML = JSON.stringify(data, null, 2);
+      const q = query(
+        collection(db, "results"),
+        orderBy("createdAt", "desc"),
+        limit(1)
+      );
+
+      const snapshot = await getDocs(q);
+      console.log("XXX ",snapshot);
+
+      const results = snapshot.docs.length
+        ? snapshot.docs[0].data().results
+        : "No data available";
+
+      console.log(results);
+      document.getElementById("results").innerHTML = results;
     };
 
     // Load data on page load
