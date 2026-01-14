@@ -39,7 +39,7 @@
     document.getElementById("save").onclick = async () => {
       const textContent = document.getElementById("adminText").value;
       try {
-        await addDoc(collection(db, "results"), {
+        await addDoc(collection(db, "items"), {
           results: textContent,
           createdAt : serverTimestamp()
         });
@@ -53,6 +53,5 @@
   </script>
 
 <script src="/guard.js"></script>
-<script src="/admin.js"></script>
 </body>
 </html>

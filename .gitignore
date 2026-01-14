@@ -2,3 +2,6 @@ node_modules/
 dist/
 data.txt
 .env
+.firebase/
+.firebaserc
+firebase.json

@@ -35,7 +35,7 @@
 
     window.readItems = async () => {
       const q = query(
-        collection(db, "results"),
+        collection(db, "items"),
         orderBy("createdAt", "desc"),
         limit(1)
       );

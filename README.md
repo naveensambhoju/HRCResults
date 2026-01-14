@@ -1,22 +1,59 @@
 # HRCResults
 
-Simple Node + Express app (vanilla JS) to let an admin save a single message to a text file and show that message to all visitors.
+Admin message and results display app using Firebase Firestore. Admin saves results, and visitors see the latest data in real-time.
 
 ## Features
 
-- Admin can save the latest message (saved to `data.txt`)
-- Public page shows the latest message from `/content`
-- Build script copies `public/` to `dist/` for static deployment
-- Uses `ADMIN_KEY` env var (defaults to `MY_SECRET_KEY`) for admin saves
+- **Firebase Firestore**: Stores and retrieves results in real-time
+- **Admin Panel**: Authenticated admin can save results with timestamp
+- **Public Display**: Shows the latest saved result on home page
+- **Vanilla JavaScript**: No build tools needed, pure client-side
+- **Firebase Hosting**: Deploy directly to Firebase for free
 
 ## Usage (development)
 
 1. Install dependencies: `npm install`
-2. Start: `npm start` (uses `server.js`)
+2. Start local server: `npm start` (uses `server.js`)
+3. Open `http://localhost:3000`
 
-## Build
+## Deploy on Firebase Hosting
 
-- `npm run build` — copies `public/` -> `dist/`
+### Prerequisites
+
+- Firebase project created at [firebase.google.com](https://firebase.google.com)
+- Firebase CLI installed: `npm install -g firebase-tools`
+
+### Step 1: Authenticate with Firebase
+
+```bash
+firebase login
+```
+
+### Step 2: Initialize Firebase (if not done)
+
+```bash
+firebase init hosting
+# Select your Firebase project when prompted
+# Public directory: public
+# Configure as single-page app: Yes
+```
+
+### Step 3: Deploy
+
+```bash
+firebase deploy
+```
+
+Your app will be live at: `https://hrcresults-2ff45.web.app`
+
+### Step 4: Set Up Firestore Database
+
+1. Go to [Firebase Console](https://console.firebase.google.com)
+2. Select your project
+3. Go to **Firestore Database**
+4. Click **Create Database**
+5. Choose **Start in test mode** (for development)
+6. Create a collection named `items` with documents containing `results` and `createdAt` fields
 
 ## Deploy on GoDaddy cPanel
 
