@@ -20,8 +20,7 @@ body {
 }
 
 input,
-textarea,
-button {
+textarea {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
@@ -37,12 +36,21 @@ textarea {
 }
 
 button {
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   background: #007bff;
   color: white;
   border: none;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s;
+}
+
+.card button {
+  width: 100%;
 }
 
 button:hover {
@@ -151,16 +159,18 @@ p#error {
 
   .admin-btn,
   .home-btn {
-    width: auto;
-    text-align: center;
     padding: 10px 14px;
     font-size: 13px;
     flex-shrink: 0;
   }
 
   input,
-  textarea,
-  button {
+  textarea {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .card button {
     padding: 14px;
     font-size: 16px;
   }
@@ -199,8 +209,12 @@ p#error {
   }
 
   input,
-  textarea,
-  button {
+  textarea {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .card button {
     padding: 12px;
     font-size: 14px;
   }
