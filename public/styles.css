@@ -1,32 +1,78 @@
-body {
-  font-family: Arial;
-  padding: 20px;
+* {
+  box-sizing: border-box;
 }
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 15px;
+  margin: 0;
+  background-color: #f5f5f5;
+  font-size: 16px;
+}
+
 .card {
-  max-width: 300px;
-  margin: auto;
+  max-width: 500px;
+  margin: 20px auto;
   box-shadow: 0 0 10px #ccc;
   padding: 20px;
   border-radius: 8px;
+  background: white;
 }
+
 input,
 textarea,
 button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
+
+textarea {
+  resize: vertical;
+  min-height: 150px;
+  font-family: monospace;
+}
+
 button {
   background: #007bff;
-  color: #fff;
+  color: white;
   border: none;
-  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.top-bar h2 {
+  flex: 1;
+  min-width: 200px;
+  margin: 0;
+  font-size: 20px;
 }
 
 .admin-btn,
@@ -34,6 +80,131 @@ button {
   text-decoration: none;
   background: #007bff;
   color: white;
-  padding: 8px 14px;
+  padding: 10px 16px;
   border-radius: 6px;
+  display: inline-block;
+  white-space: nowrap;
+  transition: background-color 0.3s;
+  font-size: 14px;
+}
+
+.admin-btn:hover,
+.home-btn:hover {
+  background-color: #0056b3;
+}
+
+#results {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+#content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+
+p {
+  margin: 10px 0;
+  color: #666;
+}
+
+p#error {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .card {
+    padding: 15px;
+    margin: 15px auto;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .top-bar h2 {
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .admin-btn,
+  .home-btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  input,
+  textarea,
+  button {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  textarea {
+    min-height: 120px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  #results,
+  #content {
+    padding: 15px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 8px;
+  }
+
+  .card {
+    padding: 12px;
+    margin: 10px auto;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .top-bar h2 {
+    font-size: 16px;
+  }
+
+  input,
+  textarea,
+  button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  textarea {
+    min-height: 100px;
+  }
+
+  #results,
+  #content {
+    padding: 12px;
+    font-size: 13px;
+  }
 }
