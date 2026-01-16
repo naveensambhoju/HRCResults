@@ -13,6 +13,7 @@
   <a href="./login.html" class="admin-btn">Admin</a>
 </div>
 <div id="results">Loading...</div>
+<div id="timestamps" class="timestamps"></div>
 
  <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -30,6 +31,9 @@
       authDomain: "HRCResults.firebaseapp.com",
       projectId: "hrcresults-2ff45"
     };
+
+    // Deployment timestamp (updated by build script)
+    const LAST_DEPLOYED = "2026-01-16T09:49:25.150Z";
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
@@ -67,6 +71,33 @@
       }
       
       document.getElementById("results").innerHTML = displayHTML;
+      
+      // Display timestamps
+      if (snapshot.docs.length > 0 && data.createdAt) {
+        const createdAtDate = data.createdAt.toDate();
+        const formattedTime = createdAtDate.toLocaleString('en-US', { 
+          month: 'short', 
+          day: 'numeric', 
+          year: 'numeric',
+          hour: 'numeric', 
+          minute: '2-digit', 
+          hour12: true 
+        });
+        
+        // Format deployment timestamp
+        const deployDate = new Date(LAST_DEPLOYED);
+        const formattedDeployTime = deployDate.toLocaleString('en-US', { 
+          month: 'short', 
+          day: 'numeric', 
+          year: 'numeric',
+          hour: 'numeric', 
+          minute: '2-digit', 
+          hour12: true 
+        });
+        document.getElementById("timestamps").innerHTML = `<p>Last Updated: ${formattedTime}</p><p>Last Deployed: ${formattedDeployTime}</p>`;
+      } else {
+        document.getElementById("timestamps").innerHTML = '<p>No data available</p>';
+      }
     };
 
     // Load data on page load
