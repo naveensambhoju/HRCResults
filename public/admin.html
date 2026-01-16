@@ -19,8 +19,19 @@
   <label for="adminText">Results:</label>
   <textarea id="adminText" rows="15"></textarea><br><br>
   <button id="save">Save</button>
-  <button id="logout">Logout</button>
+  <button id="logout" onclick="logout()">Logout</button>
 </div>
+<script>
+  // Check if admin is logged in
+  if (sessionStorage.getItem('isAdminLoggedIn') !== 'true') {
+    window.location.href = './index-access.html';
+  }
+
+  function logout() {
+    sessionStorage.removeItem('isAdminLoggedIn');
+    window.location.href = './index-access.html';
+  }
+</script>
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import {
