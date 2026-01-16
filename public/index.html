@@ -49,7 +49,18 @@
         : "No data available";
 
       console.log(results);
-      document.getElementById("results").innerHTML = results;
+      
+      // Format results with comma separation and line breaks
+      let formattedResults = results;
+      if (results && results !== "No data available") {
+        // Split by comma and rejoin with line breaks
+        formattedResults = results
+          .split(',')
+          .map(item => item.trim())
+          .join('\n');
+      }
+      
+      document.getElementById("results").innerHTML = formattedResults.replace(/\n/g, '<br>');
     };
 
     // Load data on page load
