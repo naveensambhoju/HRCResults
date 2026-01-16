@@ -14,6 +14,9 @@
 
 <div class="card">
   <h2>Admin Panel</h2>
+  <label for="noteText">Note:</label>
+  <textarea id="noteText" rows="2" placeholder="Enter note here..."></textarea><br><br>
+  <label for="adminText">Results:</label>
   <textarea id="adminText" rows="15"></textarea><br><br>
   <button id="save">Save</button>
   <button id="logout">Logout</button>
@@ -38,13 +41,16 @@
     const db = getFirestore(app);
 
     document.getElementById("save").onclick = async () => {
-      const textContent = document.getElementById("adminText").value;
+      const note = document.getElementById("noteText").value;
+      const results = document.getElementById("adminText").value;
       try {
         await addDoc(collection(db, "items"), {
-          results: textContent,
+          note: note,
+          results: results,
           createdAt : serverTimestamp()
         });
         alert("Saved successfully!");
+        document.getElementById("noteText").value = "";
         document.getElementById("adminText").value = "";
       } catch (error) {
         alert("Error saving: " + error.message);
