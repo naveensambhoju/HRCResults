@@ -9,17 +9,24 @@
 <body>
 
 <div style="position: absolute; top: 20px; right: 20px;">
-  <a href="./index.html" class="home-btn">Home</a>
+  <a href="./index.html" class="home-btn">← Back to Results</a>
 </div>
 
 <div class="card">
-  <h2>Admin Panel</h2>
-  <label for="noteText">Note:</label>
-  <textarea id="noteText" rows="2" placeholder="Enter note here..."></textarea><br><br>
-  <label for="adminText">Results:</label>
-  <textarea id="adminText" rows="15"></textarea><br><br>
-  <button id="save">Save</button>
-  <button id="logout">Logout</button>
+  <h2>📝 Admin Panel</h2>
+  
+  <div class="form-group">
+    <label for="noteText">📌 Note (Important Announcement):</label>
+    <textarea id="noteText" rows="2" placeholder="Enter a quick note or announcement..."></textarea>
+  </div>
+  
+  <div class="form-group">
+    <label for="adminText">📋 Results (Comma-separated):</label>
+    <textarea id="adminText" rows="15" placeholder="Enter results separated by commas..."></textarea>
+  </div>
+  
+  <button id="save">✓ Save Results</button>
+  <button id="logout">🚪 Logout</button>
 </div>
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -47,14 +54,19 @@
         await addDoc(collection(db, "items"), {
           note: note,
           results: results,
-          createdAt : serverTimestamp()
+          createdAt: serverTimestamp()
         });
-        alert("Saved successfully!");
+        alert("✓ Results saved successfully!");
         document.getElementById("noteText").value = "";
         document.getElementById("adminText").value = "";
       } catch (error) {
         alert("Error saving: " + error.message);
       }
+    };
+
+    document.getElementById("logout").onclick = () => {
+      sessionStorage.removeItem('isAdminLoggedIn');
+      window.location.href = './login.html';
     };
 
   </script>
